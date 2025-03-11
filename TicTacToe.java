@@ -30,17 +30,41 @@ public class TicTacToe {
             }
         }
 
+        // teacher solution (horizontal)
+        for (int[] row : board) {
+            int rowSum = 0;
+            for (int cell : row) {
+                rowSum += cell;
+            }
+            if ((rowSum) == 3)
+                return PLAYER_X;
+            if ((rowSum) == 3)
+                return PLAYER_O;
+        }
+
         // vertical
         for (int colomn = 0; colomn < board[0].length; colomn++) {
-            int totalSum = 0;
+            int columnSum = 0;
             for (int row = 0; row < board.length; row++) {
-                totalSum += board[row][colomn];
+                columnSum += board[row][colomn];
             }
-            if (totalSum == 3) {
+            if (columnSum == 3) {
                 return PLAYER_X;
-            } else if (totalSum == -3) {
+            } else if (columnSum == -3) {
                 return PLAYER_O;
             }
+        }
+
+        // teacher solution (vertical)
+        for (int colomn = 0; colomn < board[0].length; colomn++) {
+            int columnSum = 0;
+            for (int row = 0; row < board.length; row++) {
+                columnSum += board[row][colomn];
+            }
+            if (columnSum == 3)
+                return PLAYER_X;
+            if (columnSum == -3)
+                return PLAYER_O;
         }
 
         // right diagonal
